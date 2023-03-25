@@ -1,10 +1,10 @@
 import * as az from './azlogin'
-import { Application } from './Application';
-import { ServicePrincipal } from './ServicePrincipal';
+import { Application } from './Model/Application';
+import { ServicePrincipal } from './Model/ServicePrincipal';
 import { RestClient } from './RestClient';
 
 async function main() {
-  const endpoint = 'https://graph.microsoft.com/v1.0';
+  const endpoint = 'https://graph.microsoft.com/beta';
   const token = await az.azGetMsGraphToken();
   const client = new RestClient(endpoint, token.accessToken);
   const applications = await client.get<Application[]>('/applications');

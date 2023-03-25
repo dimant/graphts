@@ -1,5 +1,5 @@
 import * as childProcess from 'child_process';
-import { AccessToken } from './AccessToken';
+import { AccessToken } from './Model/AccessToken';
 
 export async function azGetMsGraphToken(): Promise<AccessToken> {
   const command = `az login --output none --allow-no-subscriptions && az account get-access-token --resource https://graph.microsoft.com`;
