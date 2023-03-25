@@ -1,26 +1,25 @@
 import * as az from './azlogin'
-import { Application } from './appmodel';
-import axios from 'axios';
-
-// Define the endpoint to list application objects.
-const endpoint = "https://graph.microsoft.com/v1.0/applications?$select=appId,displayName";
+import { Application } from './Application';
+import { ServicePrincipal } from './ServicePrincipal';
+import { RestClient } from './restclient';
 
 async function listApplications(accessToken: string) {
-  const apiUrl = 'https://graph.microsoft.com/v1.0/applications';
-  const headers = {
-    'Authorization': `Bearer ${accessToken}`,
-    'Content-Type': 'application/json',
-  };
-  const response = await axios.get(apiUrl, { headers });
-  const applications = response.data.value as Application[];
+  const client = new RestClient('https://graph.microsoft.com/v1.0', accessToken);
+  const applications = await client.get<Application[]>('/applications');
   return applications;
+}
+
+async function listServicePrincipals(accessToken: string) {
+  const client = new RestClient('https://graph.microsoft.com/v1.0', accessToken);
+  const servicePrincipals = await client.get<ServicePrincipal[]>('/servicePrincipals');
+  return servicePrincipals;
 }
 
 async function main() {
   const token = await az.azGetMsGraphToken();
-  const applications = await listApplications(token.accessToken);
+  const result = await listServicePrincipals(token.accessToken);
 
-  console.log(applications);
+  console.log(result);
 }
 
 main().then(() => {

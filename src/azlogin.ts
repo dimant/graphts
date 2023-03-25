@@ -1,22 +1,7 @@
 import * as childProcess from 'child_process';
+import { AccessToken } from './AccessToken';
 
-export class AccessToken {
-    accessToken: string;
-    expiresOn: string;
-    subscription: string;
-    tenant: string;
-    tokenType: string;
-  
-    constructor(accessToken: string, expiresOn: string, subscription: string, tenant: string, tokenType: string) {
-      this.accessToken = accessToken;
-      this.expiresOn = expiresOn;
-      this.subscription = subscription;
-      this.tenant = tenant;
-      this.tokenType = tokenType;
-    }
-  }
-
-export async function azGetMsGraphToken() : Promise<AccessToken> {
+export async function azGetMsGraphToken(): Promise<AccessToken> {
   const command = `az login --output none --allow-no-subscriptions && az account get-access-token --resource https://graph.microsoft.com`;
   const child = childProcess.spawn(command, { shell: true, stdio: ['ignore', 'pipe', 'pipe'] });
 
