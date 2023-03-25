@@ -1,13 +1,13 @@
 {
-    "compilerOptions": {
-      "target": "es6",
-      "module": "commonjs",
-      "strict": true,
-      "esModuleInterop": true,
-      "outDir": "out",
-      "sourceMap": true
-    },
-    "include": [
-      "src/**/*"
-    ]
-  }
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "out",
+    "rootDir": "src",
+    "strict": true,
+    "sourceMap": true
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
