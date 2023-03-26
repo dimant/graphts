@@ -55,13 +55,19 @@ export class RestClient implements IRestClient
     return response.data.value as T;
   }
 
+  async delete(collection: string, id: string) {
+    const headers = this.constructHeaders();
+    const url = `${this.endpoint}/${collection}/${id}`;
+    await axios.delete(url, { headers });
+  }
+
   async search<T>(collection: string, property: string, value: string) : Promise<T> {
     const headers = {
       'Authorization': `Bearer ${this.accessToken}`,
       'Content-Type': 'application/json',
       'ConsistencyLevel': 'eventual'
     };
-    
+
     const filter = this.constructSearchFilter(property, value);
     const url = `${this.endpoint}/${collection}?${filter}`;
     const response = await axios.get(url, { headers });
