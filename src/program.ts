@@ -17,11 +17,11 @@ async function graph(accessToken: string) {
   //   console.log(`  ${application.displayName} (${application.id})`);
   // });
   
-  const servicePrincipals = await client.get<ServicePrincipal[]>('servicePrincipals');
-  console.log("Service Principals:");
-  servicePrincipals.forEach((servicePrincipal) => {
-    console.log(`  ${servicePrincipal.displayName} (${servicePrincipal.id})`);
-  });
+  // const servicePrincipals = await client.get<ServicePrincipal[]>('servicePrincipals');
+  // console.log("Service Principals:");
+  // servicePrincipals.forEach((servicePrincipal) => {
+  //   console.log(`  ${servicePrincipal.displayName} (${servicePrincipal.id})`);
+  // });
 
   const search = new ODataQuery()
     .collection('servicePrincipals')
