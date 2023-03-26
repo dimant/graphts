@@ -9,16 +9,26 @@ import { RestClient } from './RestClient';
 async function graph(accessToken: string) {
   const endpoint = 'https://graph.microsoft.com/beta';
   const client = new RestClient(endpoint, accessToken);
-  const applications = await client.get<Application[]>('/applications');
-  const servicePrincipals = await client.get<ServicePrincipal[]>('/servicePrincipals');
 
-  console.log("Applications:");
-  applications.forEach((application) => {
-    console.log(`  ${application.displayName} (${application.id})`);
-  });
+  // const applications = await client.get<Application[]>('applications');
+  // console.log("Applications:");
+  // applications.forEach((application) => {
+  //   console.log(`  ${application.displayName} (${application.id})`);
+  // });
+  
+  // const servicePrincipals = await client.get<ServicePrincipal[]>('servicePrincipals');
+  // console.log("Service Principals:");
+  // servicePrincipals.forEach((servicePrincipal) => {
+  //   console.log(`  ${servicePrincipal.displayName} (${servicePrincipal.id})`);
+  // });
 
-  console.log("Service Principals:");
-  servicePrincipals.forEach((servicePrincipal) => {
+  const clientappsp = await client.search<ServicePrincipal[]>(
+    'servicePrincipals',
+    'displayName',
+    'clientapp');
+
+  console.log("ClientAppSP:");
+  clientappsp.forEach((servicePrincipal) => {
     console.log(`  ${servicePrincipal.displayName} (${servicePrincipal.id})`);
   });
 }
