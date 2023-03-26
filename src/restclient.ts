@@ -69,7 +69,7 @@ export class RestClient implements IRestClient {
     const body = JSON.stringify(data);
     const url = `${this.endpoint}/${path}`;
     const response = await axios.post(url, body, { headers });
-    return response.data.value as T;
+    return response.data.value as unknown as T;
   }
 
   async patch<T, U>(path: string, data: U): Promise<T> {
@@ -80,7 +80,7 @@ export class RestClient implements IRestClient {
     const body = JSON.stringify(data);
     const url = `${this.endpoint}/${path}`;
     const response = await axios.patch(url, body, { headers });
-    return response.data.value as T;
+    return response.data.value as unknown as T;
   }
 
   async delete(path: string, id: string): Promise<void> {

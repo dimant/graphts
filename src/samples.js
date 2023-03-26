@@ -63,7 +63,7 @@ const approle = {
 }
 
 const user = {
-    "accountEnabled":true,
+    "accountEnabled":false,
     "displayName":"Test User",
     "mailNickname":"test_user_1",
     "passwordProfile":
@@ -72,6 +72,14 @@ const user = {
         "forceChangePasswordNextSignIn":true
     },
     "userPrincipalName":"test_user_1@dimantest.onmicrosoft.com"
+}
+
+const group1 = {"@odata.context":"https://graph.microsoft.com/beta/$metadata#groups/$entity","id":"91333ee2-d41f-4b05-9901-091354bdf504","deletedDateTime":null,"classification":null,"createdDateTime":"2023-03-26T19:59:04Z","createdByAppId":"74658136-14ec-4630-ad9b-26e160ff0fc6","organizationId":"c974785a-c681-404f-9291-caba2e3c84c5","description":null,"displayName":"foo","expirationDateTime":null,"groupTypes":[],"infoCatalogs":[],"isAssignableToRole":null,"isManagementRestricted":null,"mail":null,"mailEnabled":false,"mailNickname":"4091e0b2-1","membershipRule":null,"membershipRuleProcessingState":null,"onPremisesDomainName":null,"onPremisesLastSyncDateTime":null,"onPremisesNetBiosName":null,"onPremisesSamAccountName":null,"onPremisesSecurityIdentifier":null,"onPremisesSyncEnabled":null,"preferredDataLocation":null,"preferredLanguage":null,"proxyAddresses":[],"renewedDateTime":"2023-03-26T19:59:04Z","resourceBehaviorOptions":[],"resourceProvisioningOptions":[],"securityEnabled":true,"securityIdentifier":"S-1-12-1-2436054754-1258673183-319357337-83213652","theme":null,"visibility":null,"onPremisesProvisioningErrors":[],"writebackConfiguration":{"isEnabled":null,"onPremisesGroupType":null}}
+
+/// https://graph.microsoft.com/beta/users?$select=id,userPrincipalName
+const user1 = {
+    "id": "cc08f486-74b2-490f-93c8-4c80f0c2cef7",
+    "userPrincipalName": "admin@dimantest.onmicrosoft.com"
 }
 
 const group = {

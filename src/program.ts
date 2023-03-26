@@ -6,6 +6,7 @@ import { Application } from './Model/Application';
 import { ServicePrincipal } from './Model/ServicePrincipal';
 import { RestClient } from './RestClient';
 import { ODataQuery } from './ODataRequest';
+import { User } from './Model/User';
 
 async function graph(accessToken: string) {
   const endpoint = 'https://graph.microsoft.com/beta';
