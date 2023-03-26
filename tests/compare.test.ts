@@ -35,3 +35,12 @@ test('a.a and a.b are different from b.a and b.b', () => {
 
     expect(deltas).toEqual(["obj.a: ---1 +++3", "obj.b: ---2 +++4"]);
 });
+
+test('a.a and b.a are same but b.c is not in a', () => {
+    const a = { a: 1 };
+    const b = { a: 1, c: 3 };
+
+    const deltas = d.compare(a, b);
+
+    expect(deltas).toEqual([]);
+});
