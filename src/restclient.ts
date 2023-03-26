@@ -9,6 +9,8 @@ export interface IRestClient
   post<T, U>(collection: string, data: U) : Promise<T>;
 
   patch<T, U>(collection: string, data: U) : Promise<T>;
+
+  delete(collection: string, id: string) : Promise<void>;
 }
 
 export class RestClient implements IRestClient
@@ -55,7 +57,7 @@ export class RestClient implements IRestClient
     return response.data.value as T;
   }
 
-  async delete(collection: string, id: string) {
+  async delete(collection: string, id: string) : Promise<void> {
     const headers = this.constructHeaders();
     const url = `${this.endpoint}/${collection}/${id}`;
     await axios.delete(url, { headers });
