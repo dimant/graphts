@@ -28,93 +28,104 @@ interface SamlSingleSignOnSettings {
 }
 
 export class ServicePrincipal {
-    id: string;
-    appId: string;
-    
-    accountEnabled: boolean;
-    addIns: string[];
-    alternativeNames: string[];
-    appDescription: string | null;
-    appDisplayName: string;
-    applicationTemplateId: string | null;
-    appRoleAssignmentRequired: boolean;
-    appRoles: AppRole[];
-    deletedDateTime: string | null;
-    description: string | null;
-    disabledByMicrosoftStatus: string | null;
-    displayName: string;
-    errorUrl: string | null;
-    homepage: string | null;
-    info: InformationalUrl;
-    keyCredentials: KeyCredential[];
-    loginUrl: string | null;
-    logoutUrl: string | null;
-    notes: string | null;
-    notificationEmailAddresses: string[];
-    passwordCredentials: PasswordCredential[];
-    passwordSingleSignOnSettings: PasswordSingleSignOnSettings | null;
-    preferredSingleSignOnMode: string | null;
-    preferredTokenSigningKeyEndDateTime: string | null;
-    preferredTokenSigningKeyThumbprint: string | null;
-    publisherName: string | null;
-    replyUrls: string[];
-    samlMetadataUrl: string | null;
-    samlSingleSignOnSettings: SamlSingleSignOnSettings | null;
-    servicePrincipalNames: string[];
-    servicePrincipalType: string;
-    signInAudience: string;
-    tags: string[];
-    tokenEncryptionKeyId: string | null;
-    verifiedPublisher: VerifiedPublisher;
-    
-    appOwnerOrganizationId: string;
-    createdDateTime: string;
-    publishedPermissionScopes: PermissionScope[];
-    oauth2PermissionScopes: PermissionScope[];
-    resourceSpecificApplicationPermissions: unknown[];
+    public id: string;
+    public appId: string;
 
-    constructor(json: any) {
-        this.id = json.id;
-        this.deletedDateTime = json.deletedDateTime;
-        this.accountEnabled = json.accountEnabled;
-        this.alternativeNames = json.alternativeNames;
-        this.appDisplayName = json.appDisplayName;
-        this.appDescription = json.appDescription;
-        this.appId = json.appId;
-        this.errorUrl = json.errorUrl;
-        this.applicationTemplateId = json.applicationTemplateId;
-        this.appOwnerOrganizationId = json.appOwnerOrganizationId;
-        this.appRoleAssignmentRequired = json.appRoleAssignmentRequired;
-        this.createdDateTime = json.createdDateTime;
-        this.description = json.description;
-        this.disabledByMicrosoftStatus = json.disabledByMicrosoftStatus;
-        this.displayName = json.displayName;
-        this.homepage = json.homepage;
-        this.loginUrl = json.loginUrl;
-        this.logoutUrl = json.logoutUrl;
-        this.notes = json.notes;
-        this.notificationEmailAddresses = json.notificationEmailAddresses;
-        this.passwordSingleSignOnSettings = json.passwordSingleSignOnSettings;
-        this.preferredSingleSignOnMode = json.preferredSingleSignOnMode;
-        this.preferredTokenSigningKeyEndDateTime = json.preferredTokenSigningKeyEndDateTime;
-        this.preferredTokenSigningKeyThumbprint = json.preferredTokenSigningKeyThumbprint;
-        this.publishedPermissionScopes = json.publishedPermissionScopes;
-        this.publisherName = json.publisherName;
-        this.replyUrls = json.replyUrls;
-        this.samlMetadataUrl = json.samlMetadataUrl;
-        this.servicePrincipalNames = json.servicePrincipalNames;
-        this.servicePrincipalType = json.servicePrincipalType;
-        this.signInAudience = json.signInAudience;
-        this.tags = json.tags;
-        this.tokenEncryptionKeyId = json.tokenEncryptionKeyId;
-        this.samlSingleSignOnSettings = json.samlSingleSignOnSettings;
-        this.addIns = json.addIns;
-        this.appRoles = json.appRoles;
-        this.info = json.info;
-        this.keyCredentials = json.keyCredentials;
-        this.oauth2PermissionScopes = json.oauth2PermissionScopes;
-        this.passwordCredentials = json.passwordCredentials;
-        this.resourceSpecificApplicationPermissions = json.resourceSpecificApplicationPermissions;
-        this.verifiedPublisher = json.verifiedPublisher;
+    public accountEnabled: boolean;
+    public addIns: string[];
+    public alternativeNames: string[];
+    public appDescription: string | null;
+    public appDisplayName: string;
+    public applicationTemplateId: string | null;
+    public appRoleAssignmentRequired: boolean;
+    public appRoles: AppRole[];
+    public deletedDateTime: string | null;
+    public description: string | null;
+    public disabledByMicrosoftStatus: string | null;
+    public displayName: string;
+    public errorUrl: string | null;
+    public homepage: string | null;
+    public info: InformationalUrl;
+    public keyCredentials: KeyCredential[];
+    public loginUrl: string | null;
+    public logoutUrl: string | null;
+    public notes: string | null;
+    public notificationEmailAddresses: string[];
+    public passwordCredentials: PasswordCredential[];
+    public passwordSingleSignOnSettings: PasswordSingleSignOnSettings | null;
+    public preferredSingleSignOnMode: string | null;
+    public preferredTokenSigningKeyEndDateTime: string | null;
+    public preferredTokenSigningKeyThumbprint: string | null;
+    public publisherName: string | null;
+    public replyUrls: string[];
+    public samlMetadataUrl: string | null;
+    public samlSingleSignOnSettings: SamlSingleSignOnSettings | null;
+    public servicePrincipalNames: string[];
+    public servicePrincipalType: string;
+    public signInAudience: string;
+    public tags: string[];
+    public tokenEncryptionKeyId: string | null;
+    public verifiedPublisher: VerifiedPublisher;
+
+    public appOwnerOrganizationId: string;
+    public createdDateTime: string;
+    public publishedPermissionScopes: PermissionScope[];
+    public oauth2PermissionScopes: PermissionScope[];
+    public resourceSpecificApplicationPermissions: unknown[];
+
+    public constructor() {
+        this.id = '';
+        this.appId = '';
+        this.accountEnabled = true;
+        this.addIns = [];
+        this.alternativeNames = [];
+        this.appDescription = null;
+        this.appDisplayName = '';
+        this.applicationTemplateId = null;
+        this.appRoleAssignmentRequired = false;
+        this.appRoles = [];
+        this.deletedDateTime = null;
+        this.description = null;
+        this.disabledByMicrosoftStatus = null;
+        this.displayName = '';
+        this.errorUrl = null;
+        this.homepage = null;
+        this.info = {
+            logoUrl: null,
+            marketingUrl: null,
+            privacyStatementUrl: null,
+            supportUrl: null,
+            termsOfServiceUrl: null
+        };
+        this.keyCredentials = [];
+        this.loginUrl = null;
+        this.logoutUrl = null;
+        this.notes = null;
+        this.notificationEmailAddresses = [];
+        this.passwordCredentials = [];
+        this.passwordSingleSignOnSettings = null;
+        this.preferredSingleSignOnMode = null;
+        this.preferredTokenSigningKeyEndDateTime = null;
+        this.preferredTokenSigningKeyThumbprint = null;
+        this.publisherName = null;
+        this.replyUrls = [];
+        this.samlMetadataUrl = null;
+        this.samlSingleSignOnSettings = null;
+        this.servicePrincipalNames = [];
+        this.servicePrincipalType = '';
+        this.signInAudience = '';
+        this.tags = [];
+        this.tokenEncryptionKeyId = null;
+        this.verifiedPublisher = {
+            displayName: null,
+            verifiedPublisherId: null,
+            addedDateTime: null
+        };
+
+        this.appOwnerOrganizationId = '';
+        this.createdDateTime = '';
+        this.publishedPermissionScopes = [];
+        this.oauth2PermissionScopes = [];
+        this.resourceSpecificApplicationPermissions = [];
     }
 }

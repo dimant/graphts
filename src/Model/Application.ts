@@ -20,7 +20,6 @@ interface ApplicationRequiredResourceAccess {
     resourceAppId: string;
 }
 
-
 interface ApplicationWebImplicitGrantSettings {
     enableAccessTokenIssuance: boolean;
     enableIdTokenIssuance: boolean;
@@ -48,7 +47,7 @@ interface ApplicationSpa {
 }
 
 // https://learn.microsoft.com/en-us/graph/api/resources/apiapplication?view=graph-rest-1.0
-interface ApiApplication {
+interface ApplicationApi {
     acceptMappedClaims: string | null;
     knownClientApplications: string[];
     oauth2PermissionScopes: PermissionScope[];
@@ -86,7 +85,6 @@ interface PublicClientApplication {
     redirectUris: string[];
 }
 
-
 interface ApplicationServicePrincipalLockConfiguration {
     isEnabled: boolean;
     allProperties: boolean;
@@ -95,47 +93,118 @@ interface ApplicationServicePrincipalLockConfiguration {
     tokenEncryptionKeyId: boolean
 }
 
-export interface Application {
-    id: string;
-    appId: string;
-    appRoles: AppRole[];
+export class Application {
+    public id: string;
+    public appId: string;
+    public appRoles: AppRole[];
 
     // simplified model. fulld docs:
     // https://learn.microsoft.com/en-us/graph/api/resources/addin?view=graph-rest-1.0
-    addIns: string[];
-    api: ApiApplication;
-    applicationTemplateId: string | null;
-    certification: ApplicationCertification | null;
-    createdDateTime: string;
-    deletedDateTime: string | null;
-    description: string | null;
-    disabledByMicrosoftStatus: string | null;
-    displayName: string;
-    groupMembershipClaims: string | null;
-    identifierUris: string[];
-    info: InformationalUrl;
-    isDeviceOnlyAuthSupported: boolean | null;
-    isFallbackPublicClient: boolean | null;
-    keyCredentials: KeyCredential[];
-    notes: string | null;
-    oauth2RequiredPostResponse: boolean;
-    optionalClaims: ApplicationOptionalClaims | null;
-    parentalControlSettings: ApplicationParentalControlSettings | null;
-    passwordCredentials: PasswordCredential[];
-    publicClient: PublicClientApplication;
-    publisherDomain: string;
-    requiredResourceAccess: ApplicationRequiredResourceAccess[];
-    samlMetadataUrl: string | null;
-    serviceManagementReference: string | null;
-    signInAudience: string;
-    spa: ApplicationSpa;
-    tags: string[];
-    tokenEncryptionKeyId: TokenEncryptionKeyId | null;
-    web: ApplicationWeb;
-    verifiedPublisher: VerifiedPublisher;
-    servicePrincipalLockConfiguration: ApplicationServicePrincipalLockConfiguration | null;
+    public addIns: string[];
+    public api: ApplicationApi;
+    public applicationTemplateId: string | null;
+    public certification: ApplicationCertification | null;
+    public createdDateTime: string;
+    public deletedDateTime: string | null;
+    public description: string | null;
+    public disabledByMicrosoftStatus: string | null;
+    public displayName: string;
+    public groupMembershipClaims: string | null;
+    public identifierUris: string[];
+    public info: InformationalUrl;
+    public isDeviceOnlyAuthSupported: boolean | null;
+    public isFallbackPublicClient: boolean | null;
+    public keyCredentials: KeyCredential[];
+    public notes: string | null;
+    public oauth2RequiredPostResponse: boolean;
+    public optionalClaims: ApplicationOptionalClaims | null;
+    public parentalControlSettings: ApplicationParentalControlSettings | null;
+    public passwordCredentials: PasswordCredential[];
+    public publicClient: PublicClientApplication;
+    public publisherDomain: string;
+    public requiredResourceAccess: ApplicationRequiredResourceAccess[];
+    public samlMetadataUrl: string | null;
+    public serviceManagementReference: string | null;
+    public signInAudience: string;
+    public spa: ApplicationSpa;
+    public tags: string[];
+    public tokenEncryptionKeyId: TokenEncryptionKeyId | null;
+    public web: ApplicationWeb;
+    public verifiedPublisher: VerifiedPublisher;
+    public servicePrincipalLockConfiguration: ApplicationServicePrincipalLockConfiguration | null;
 
-    defaultRedirectUri: string | null;
-    requestSignatureVerification: string | null;
+    public defaultRedirectUri: string | null;
+    public requestSignatureVerification: string | null;
+
+    public constructor() {
+        this.id = '';
+        this.appId = '';
+        this.appRoles = [];
+
+        this.addIns = [];
+        this.api = {
+            acceptMappedClaims: null,
+            knownClientApplications: [],
+            oauth2PermissionScopes: [],
+            preAuthorizedApplications: [],
+            requestedAccessTokenVersion: null
+        };
+        this.applicationTemplateId = null;
+        this.certification = null;
+        this.createdDateTime = '';
+        this.deletedDateTime = null;
+        this.description = null;
+        this.disabledByMicrosoftStatus = null;
+        this.displayName = '';
+        this.groupMembershipClaims = null;
+        this.identifierUris = [];
+        this.info = {
+            logoUrl: null,
+            marketingUrl: null,
+            privacyStatementUrl: null,
+            supportUrl: null,
+            termsOfServiceUrl: null
+        };
+        this.isDeviceOnlyAuthSupported = null;
+        this.isFallbackPublicClient = null;
+        this.keyCredentials = [];
+        this.notes = null;
+        this.oauth2RequiredPostResponse = false;
+        this.optionalClaims = null;
+        this.parentalControlSettings = null;
+        this.passwordCredentials = [];
+        this.publicClient = {
+            redirectUris: []
+        };
+        this.publisherDomain = '';
+        this.requiredResourceAccess = [];
+        this.samlMetadataUrl = null;
+        this.serviceManagementReference = null;
+        this.signInAudience = '';
+        this.spa = {
+            redirectUris: []
+        };
+        this.tags = [];
+        this.tokenEncryptionKeyId = null;
+        this.web = {
+            homePageUrl: null,
+            logoutUrl: null,
+            redirectUris: [],
+            implicitGrantSettings: {
+                enableAccessTokenIssuance: false,
+                enableIdTokenIssuance: false
+            },
+            redirectUriSettings: []
+        };
+        this.verifiedPublisher = {
+            displayName: '',
+            verifiedPublisherId: '',
+            addedDateTime: ''
+        };
+        this.servicePrincipalLockConfiguration = null;
+
+        this.defaultRedirectUri = null;
+        this.requestSignatureVerification = null;
+    }
 }
 
