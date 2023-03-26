@@ -5,6 +5,7 @@ import * as cred from './user_credentials.cred'
 import { Application } from './Model/Application';
 import { ServicePrincipal } from './Model/ServicePrincipal';
 import { RestClient } from './RestClient';
+import { ODataQuery } from './ODataRequest';
 
 async function graph(accessToken: string) {
   const endpoint = 'https://graph.microsoft.com/beta';
@@ -16,16 +17,18 @@ async function graph(accessToken: string) {
   //   console.log(`  ${application.displayName} (${application.id})`);
   // });
   
-  // const servicePrincipals = await client.get<ServicePrincipal[]>('servicePrincipals');
-  // console.log("Service Principals:");
-  // servicePrincipals.forEach((servicePrincipal) => {
-  //   console.log(`  ${servicePrincipal.displayName} (${servicePrincipal.id})`);
-  // });
+  const servicePrincipals = await client.get<ServicePrincipal[]>('servicePrincipals');
+  console.log("Service Principals:");
+  servicePrincipals.forEach((servicePrincipal) => {
+    console.log(`  ${servicePrincipal.displayName} (${servicePrincipal.id})`);
+  });
 
-  const clientappsp = await client.search<ServicePrincipal[]>(
-    'servicePrincipals',
-    'displayName',
-    'clientapp');
+  const search = new ODataQuery()
+    .collection('servicePrincipals')
+    .search('displayName', 'clientapp')
+    .select(['displayName', 'id']);
+
+  const clientappsp = await client.search<ServicePrincipal[]>(search.path());
 
   console.log("ClientAppSP:");
   clientappsp.forEach((servicePrincipal) => {
