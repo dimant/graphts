@@ -1,7 +1,18 @@
 import { ResourcePool } from '../src/ResourcePool';
 
+test('acquire and cleanup on release', () => {
+    const cleanup = jest.fn();
+    const pool = new ResourcePool([1, 2, 3], cleanup);
+
+    pool.acquire();
+    pool.release(1);
+
+    expect(cleanup).toBeCalledWith(1);
+});
+
 test('acquire and release', () => {
-    const pool = new ResourcePool([1, 2, 3]);
+    const cleanup = jest.fn();
+    const pool = new ResourcePool([1, 2, 3], cleanup);
 
     expect(pool.acquire()).resolves.toBe(3);
     expect(pool.acquire()).resolves.toBe(2);
@@ -15,7 +26,8 @@ test('acquire and release', () => {
 });
 
 test('acquire and release in order with one waiter', () => {
-    const pool = new ResourcePool([1, 2, 3]);
+    const cleanup = jest.fn();
+    const pool = new ResourcePool([1, 2, 3], cleanup);
 
     const first =  pool.acquire();
     const second = pool.acquire();
@@ -28,7 +40,8 @@ test('acquire and release in order with one waiter', () => {
 });
 
 test('acquire and release in order with multiple waiters', () => {
-    const pool = new ResourcePool([1, 2, 3]);
+    const cleanup = jest.fn();
+    const pool = new ResourcePool([1, 2, 3], cleanup);
 
     const first =  pool.acquire();
     const second = pool.acquire();
