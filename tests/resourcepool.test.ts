@@ -25,7 +25,7 @@ test('acquire and release', () => {
     expect(pool.acquire()).resolves.toBe(4);
 });
 
-test('acquire and release in order with one waiter', () => {
+test('acquire and release with one waiter', () => {
     const cleanup = jest.fn();
     const pool = new ResourcePool([1, 2, 3], cleanup);
 
